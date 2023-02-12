@@ -38,7 +38,6 @@ namespace HotelListing.Controllers
         public CountriesController(HotelListingDbContext context)
         {
             _context = context;
->>>>>>> c42b8e42016132fe641c126614e26bbd7a42eb8f
         }
 
         // GET: api/Countries
@@ -53,7 +52,6 @@ namespace HotelListing.Controllers
         public async Task<ActionResult<IEnumerable<Country>>> GetCountries()
         {
             return await _context.Countries.ToListAsync();
->>>>>>> c42b8e42016132fe641c126614e26bbd7a42eb8f
         }
 
         // GET: api/Countries/5
@@ -68,7 +66,6 @@ namespace HotelListing.Controllers
         {
             var country = await _context.Countries.FindAsync(id);
 
->>>>>>> c42b8e42016132fe641c126614e26bbd7a42eb8f
             if (country == null)
             {
                 return NotFound();
@@ -78,7 +75,6 @@ namespace HotelListing.Controllers
             return Ok(conutryDto);
 =======
             return country;
->>>>>>> c42b8e42016132fe641c126614e26bbd7a42eb8f
         }
 
         // PUT: api/Countries/5
@@ -92,7 +88,6 @@ namespace HotelListing.Controllers
         public async Task<IActionResult> PutCountry(int id, Country country)
         {
             if (id != country.Id)
->>>>>>> c42b8e42016132fe641c126614e26bbd7a42eb8f
             {
                 return BadRequest();
             }
@@ -105,7 +100,7 @@ namespace HotelListing.Controllers
                 return NotFound();
             }
             mapper.Map(updateCountyDto, counrty);
-            
+
             try
             {
                 await repository.UpdateAsync(counrty);
@@ -123,7 +118,6 @@ namespace HotelListing.Controllers
             catch (DbUpdateConcurrencyException)
             {
                 if (!CountryExists(id))
->>>>>>> c42b8e42016132fe641c126614e26bbd7a42eb8f
                 {
                     return NotFound();
                 }
@@ -149,7 +143,6 @@ namespace HotelListing.Controllers
         {
             _context.Countries.Add(country);
             await _context.SaveChangesAsync();
->>>>>>> c42b8e42016132fe641c126614e26bbd7a42eb8f
 
             return CreatedAtAction("GetCountry", new { id = country.Id }, country);
         }
@@ -162,7 +155,6 @@ namespace HotelListing.Controllers
             var country= await repository.GetAsync(id);
 =======
             var country = await _context.Countries.FindAsync(id);
->>>>>>> c42b8e42016132fe641c126614e26bbd7a42eb8f
             if (country == null)
             {
                 return NotFound();
@@ -186,7 +178,6 @@ namespace HotelListing.Controllers
         private bool CountryExists(int id)
         {
             return _context.Countries.Any(e => e.Id == id);
->>>>>>> c42b8e42016132fe641c126614e26bbd7a42eb8f
         }
     }
 }
